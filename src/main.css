@@ -18,13 +18,28 @@ position:absolute
 z-index:-1
 }
 
-.pebblecontainer{
-width:50%;
-padding-bottom:50%;
-float:left;
-
-background-color: aqua;
+.picked{
+margin:0 ! important;
+position:absolute;
+transform: scale(1.5);
+padding-bottom:0px ! important;
 }
+
+@keyframes raise {
+0%{transform:scale(1)}
+100%{transform:scale(1.5)}
+    
+}
+
+.pebblecontainer{
+width:30%;
+padding-bottom:30%;
+float:left;
+display:flex;
+margin:10%;
+border-radius: 10px;
+}
+
 body{
 display:flex
 

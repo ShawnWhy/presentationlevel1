@@ -4,6 +4,7 @@ const math = require('canvas-sketch-util/math');
 import style from './main.css'
 const agents = [];
 const ripples = [];
+let pondcolor = 'blue'
 let dotsmove='on'
 const pond = document.getElementById('pond')
 const canvas = document.getElementById('canvas')
@@ -23,9 +24,93 @@ import gsap from "gsap";
 import $ from "./Jquery"
 let lure ='on'
 let rippleTrottle='on'
-
+let lureSelection = 'off'
 
 const presentationInformation=[
+{
+title:'HelpDesk',
+pages:[
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+]
+},
+{
+title:'HelpDesk',
+pages:[
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+]
+},
+{
+title:'HelpDesk',
+pages:[
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+]
+},
+{
+title:'HelpDesk',
+pages:[
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+{title:"tasks",
+description:"ddfd",
+image:''
+},
+]
+},
 {
 title:'HelpDesk',
 pages:[
@@ -63,14 +148,70 @@ function getMousePos(canvas2, evt) {
 
 }
 
-const castPebbles = ()=>{
 
-var pebbleContainer = $('<div>')
-pebbleContainer.assClass('pebblecontainer')
+function initPebbles(){
+$('.foodContainer').html('')
+for (var i=0; i<presentationInformation.length; i++){
+castPebbles(i)
+}
+}
+
+const castPebbles = (i)=>{
+let pebbleContainer = $('<div>')
+pebbleContainer.addClass('pebblecontainer')
+
+let pebbleColor ='#'+ Math.floor(Math.random()*16777215).toString(16);
+pebbleContainer.attr('name', i)
+pebbleContainer.css('background-color', pebbleColor)
+$('.foodContainer').append(pebbleContainer)
+}
+initPebbles()
+
+
+function pebbleFollow(event){
+var selectedPebbles = $('.picked');
+
+if(selectedPebbles.length>0){
+
+$(selectedPebbles[0]).css("top", event.clientY+30)
+$(selectedPebbles[0]).css('left', event.clientX+30)
 
 
 }
 
+}
+$('body').on('mousemove',(event)=>{
+console.log('mouae move')
+pebbleFollow(event)
+
+})
+
+
+function selectPebble(event){
+lureSelection='on';
+var currentPebble = event.target;
+let height = $(currentPebble).innerHeight();
+let width = $(currentPebble).innerWidth()
+// console.log(height)
+// console.log(width)
+console.log($(event.target))
+$(currentPebble).css("top", event.clientY+30)
+$(currentPebble).css('left', event.clientX+30)
+$(currentPebble).css("animation",'raise .3s both');
+
+setTimeout(() => {
+$(currentPebble).css('height', height+'px')
+$(currentPebble).css('width', width+ 'px')
+$(currentPebble).addClass("picked")
+}, 300);
+
+
+}
+$('body').on('click','.pebblecontainer',(event)=>{
+console.log('select pebble')
+selectPebble(event)
+
+})
 
 const movePixles=(e)=>{
 mousePos = getMousePos(canvas, e)
@@ -235,7 +376,7 @@ const animate = () => {
 const stalk=(e)=>{
 mousePos = getMousePos(canvas, e)
 
-if(lure=='on'){
+if(lure=='on'&&lureSelection=='on'){
 		lure='off'
 
 for (let i = 0; i < agents.length; i++) {
