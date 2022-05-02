@@ -25,6 +25,7 @@ import $ from "./Jquery"
 let lure ='on'
 let rippleTrottle='on'
 let lureSelection = 'off'
+let waterColor = 'white'
 
 const presentationInformation=[
 {
@@ -181,10 +182,49 @@ $(selectedPebbles[0]).css('left', event.clientX+30)
 
 }
 $('body').on('mousemove',(event)=>{
-console.log('mouae move')
+// console.log('mouae move')
 pebbleFollow(event)
 
 })
+
+
+$('#canvas2').click((event)=>{
+event.preventDefault();
+event.stopPropagation();
+console.log('pondclick')
+if(lureSelection=='on'){
+dropPebble();
+
+}
+
+})
+
+function dropPebble(){
+var picked = $('.picked')
+$(picked[0]).css('animation', 'fall both .5s ease-in')	
+for (let i = 0; i < agents.length; i++) {
+	const agent = agents[i];
+     agent.stalk(mousePos)
+		}
+var pickedColor = $(picked[0]).css('background-color')
+
+setTimeout(() => {
+$(picked).css('height', '')
+$(picked).css('width', '')
+$(picked).css('animation', '')
+lureSelection='off'
+
+$(picked).removeClass('picked')
+waterColor=pickedColor
+
+
+
+
+
+}, 500);
+
+}
+
 
 
 function selectPebble(event){
@@ -194,7 +234,7 @@ let height = $(currentPebble).innerHeight();
 let width = $(currentPebble).innerWidth()
 // console.log(height)
 // console.log(width)
-console.log($(event.target))
+// console.log($(event.target))
 $(currentPebble).css("top", event.clientY+30)
 $(currentPebble).css('left', event.clientX+30)
 $(currentPebble).css("animation",'raise .3s both');
@@ -208,7 +248,7 @@ $(currentPebble).addClass("picked")
 
 }
 $('body').on('click','.pebblecontainer',(event)=>{
-console.log('select pebble')
+// console.log('select pebble')
 selectPebble(event)
 
 })
@@ -263,8 +303,8 @@ constructor(x, y) {
 	}
 
 draw() {
-		console.log(context)
-		console.log(ripples)
+		// console.log(context)
+		// console.log(ripples)
 		context2.save();
 		context2.translate(this.pos.x, this.pos.y);
 		context2.fillStyle ="rgba(0,0,0,.2)";
@@ -309,8 +349,8 @@ rippleTrottle='on'
 function rippleGrow(){
 
 for(let i=0; i<ripples.length;i++){
-console.log(i)
-console.log(agents)
+// console.log(i)
+// console.log(agents)
 ripples[i].grow();
 ripples[i].draw();
 }
@@ -339,7 +379,7 @@ class Agent {
 		context.save();
 		context.translate(this.pos.x, this.pos.y);
 
-		context.lineWidth = 4;
+		context.lineWidth = 2;
 		context.fillStyle=this.fillStyle
 		context.beginPath();
 		context.arc(0, 0, this.radius, 0, Math.PI * 2);
@@ -391,6 +431,7 @@ for (let i = 0; i < agents.length; i++) {
 
 pond.addEventListener('mouseover', ()=>{mouseEnter="on"})
 pond.addEventListener('mousemove', (event)=>{
+
 stalk(event);
 createRipple();
 
@@ -432,7 +473,8 @@ ripples[i].draw()
 }
 
 if(agents.length>0&&dotsmove=='on'){
-context.clearRect(0, 0, canvas.width, canvas.height);
+context.fillStyle=waterColor
+context.fillRect(0, 0, canvas.width, canvas.height);
 for(let i = 0; i<agents.length;i++){
 
 agents[i].update()
