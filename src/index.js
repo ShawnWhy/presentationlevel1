@@ -4,7 +4,6 @@ const math = require('canvas-sketch-util/math');
 import style from './main.css'
 const agents = [];
 const ripples = [];
-let pondcolor = 'blue'
 let dotsmove='on'
 const pond = document.getElementById('pond')
 const canvas = document.getElementById('canvas')
@@ -26,6 +25,14 @@ let lure ='on'
 let rippleTrottle='on'
 let lureSelection = 'off'
 let waterColor = 'white'
+
+
+var download = function(){
+	var link = document.createElement('a');
+	link.download = 'filename.png';
+	link.href = document.getElementById('canvas').toDataURL()
+	link.click();
+  }	// get image URI from canvas object
 
 const presentationInformation=[
 {
@@ -200,13 +207,17 @@ dropPebble();
 })
 
 function dropPebble(){
+
 var picked = $('.picked')
+$(picked).addClass('picked2')
+$(picked).removeClass('picked')
 $(picked[0]).css('animation', 'fall both .5s ease-in')	
 for (let i = 0; i < agents.length; i++) {
 	const agent = agents[i];
      agent.stalk(mousePos)
 		}
 var pickedColor = $(picked[0]).css('background-color')
+var picked = $('.picked2')
 
 setTimeout(() => {
 $(picked).css('height', '')
@@ -214,13 +225,8 @@ $(picked).css('width', '')
 $(picked).css('animation', '')
 lureSelection='off'
 
-$(picked).removeClass('picked')
+$(picked).removeClass('picked2')
 waterColor=pickedColor
-
-
-
-
-
 }, 500);
 
 }
@@ -473,6 +479,7 @@ ripples[i].draw()
 }
 
 if(agents.length>0&&dotsmove=='on'){
+	// console.log(waterColor)
 context.fillStyle=waterColor
 context.fillRect(0, 0, canvas.width, canvas.height);
 for(let i = 0; i<agents.length;i++){
@@ -502,3 +509,22 @@ agents[i].bounce(1000, 1000)
 }
 
 startAnimating(5)
+
+
+$("#draw").click((e)=>{
+e.preventDefault();
+e.stopPropagation();
+
+waterColor='rgba(0,0,0,0)';
+
+})
+
+
+
+$("#download").click((e)=>{
+	e.preventDefault();
+	e.stopPropagation();
+	
+	download();
+	
+	})

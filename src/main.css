@@ -25,6 +25,13 @@ transform: scale(1.5);
 padding-bottom:0px ! important;
 border:1px solid black;
 }
+.picked2{
+margin:0 ! important;
+position:absolute;
+transform: scale(1.5);
+padding-bottom:0px ! important;
+border:1px solid black;
+}
 
 @keyframes raise {
 0%{transform:scale(1)}
@@ -59,7 +66,39 @@ border:2px black solid;
 height:fit-content;
 width:300px;
 margin-right:50px;
+}
 
 
+.presentation{
+height:100%;
+width:60%;
+left:20%;
+overflow: scroll;
+background-color:white;
+border-radius: 12px;
+border:2px solid black;
+position:absolute;  
+z-index:3;
+display:none;
+}
+
+.gameButton{
+    float:left;
+    padding:10px;
+    clear:both;
+    margin:10px;
+    border-radius:10px;
+    border:2px solid black;
+}
+
+#draw:hover{
+
+background-color:rgb(61, 179, 179);
 
 }
+
+#download:hover{
+
+    background-color:rgb(221, 60, 188);
+    
+    }
