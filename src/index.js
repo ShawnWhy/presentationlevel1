@@ -25,7 +25,50 @@ let lure ='on'
 let rippleTrottle='on'
 let lureSelection = 'off'
 let waterColor = 'white'
+let SelectNumber;
+import hamilton1 from './hamilton beach.jpg'
+import hamilton2 from './hamilton2.jpg'
+import hamilton3 from './hamilton3.png'
+import hamilton4 from './hamilton4.png'
+import sycom1 from './sycom.png'
+import sycom2 from './sycom2.jpg'
+import sycom3 from './sycom3.png'
+import sycom4 from './sycom4.png'
+import altria1 from './altria.png'
+import altria2 from './altria2.jpg'
+import altria3 from './altria3.png'
+import altria4 from './altria4.png'
+import medstar1 from './medstar.jpg'
+import medstar2 from './medstar2.jpg'
+import medstar3 from './medstar3.png'
+import medstar4 from './hamilton beach.jpg'
+import wordpress1 from './wordpress.png'
+import wordpress2 from './hamilton beach.jpg'
+import wordpress3 from './wordpress3.png'
+import wordpress4 from './hamilton beach.jpg'
 
+
+var images=[
+[hamilton1,hamilton2,hamilton3,hamilton4],
+[sycom1,sycom2,sycom3,sycom4],
+[altria1,altria2,altria3,altria4],
+[medstar1,medstar2,medstar3,medstar4],
+[wordpress1,wordpress2,wordpress3,wordpress4]
+]
+
+
+
+
+function displayInformation(){
+$('.presentation').html(presentationInformation[SelectNumber])
+var image1 = $('#image1').attr('src', images[SelectNumber][0])
+// console.log(image1)
+$('#image2').attr('src', images[SelectNumber][1])
+$('#image3').attr('src', images[SelectNumber][2])
+$('#image4').attr('src', images[SelectNumber][3])
+$('.presentation').css('display', 'block')
+$('body').css('background-color', 'grey')
+}
 
 var download = function(){
 	var link = document.createElement('a');
@@ -35,111 +78,226 @@ var download = function(){
   }	// get image URI from canvas object
 
 const presentationInformation=[
-{
-title:'HelpDesk',
-pages:[
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-]
-},
-{
-title:'HelpDesk',
-pages:[
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-]
-},
-{
-title:'HelpDesk',
-pages:[
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-]
-},
-{
-title:'HelpDesk',
-pages:[
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-]
-},
-{
-title:'HelpDesk',
-pages:[
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-{title:"tasks",
-description:"ddfd",
-image:''
-},
-]
-},
+
+	`<div><h2>Helpdesk - Hamilton Beach </h2>
+	<img id='image1'></img>
+	<img id='image2' ></img>
+    <p>Hamilton Beach is a large manufacturer of home appliances in the United States. They have their major warehouse in Baylia, MS</p>
+    <p>They use three data management systems to maintain and monitor their operation </p>
+	<img id='image3'style='height:600px' ></img>
+    <p>they are :</p>
+    <ul>
+        <li>HighJump</li>
+        <li>Epicore</li>
+        <li>Atlassian Jira</li>
+    </ul>
+    <h3>Responsibilities</h3>
+	<img id='image4' style='height:600px'></img>
+    <ul>
+        <li>
+           respond to employee technical issues through phone and Atlassian Jira
+        </li>
+        <li>
+            assess the issue and collect clear and relevant information from the client
+         </li>
+        <li>
+            using existing knowledge base and google to solve issue using trouble-shooting procedure      
+        </li>
+        <li>
+            redirect higher-level issues to the relevant higher-tier technician
+        </li>
+        <li>
+            record successful solutions into a instructional document and add to existing knowledge-base 
+        </li>
+
+    </ul>
+    <h3>Achievements</h3>
+    <ul>
+        <li>
+           successfully responded to more than 300 tickets, solving client issues.
+        </li>
+
+    </ul>
+</div> `
+,
+
+
+`<div><h2>Networking and Server Monitoring - Sycom </h2>
+<img id='image1'></img>
+<img id='image2'style="height:400px; margin-top:50px"></img>
+<p>Sycom is a IT service company active throughout the United States. They manage the information infrastructure for many medium to large organizations</p>
+
+<p>They use a variety of moniroting tools for physical and virtual devices that they manage </p>
+<img id='image3' style='height:600px'></img>
+<p>they are :</p>
+
+
+<ul>
+	<li>Solar Winds</li>
+	<li>Ninja</li>
+	<li>Meraki</li>
+
+</ul>
+<img id='image4' style='height:600px'></img>
+
+<p>these tools constantly communicates with the monitored devices and networks, keeps track of the traffic, and alerts the administrator of high-traffic events and device outages</p>
+<h3>Responsibility</h3>
+<p>the administrator's main task is to keep everything in good running order</p>
+<p> this involves running maintenance and regular updates on devices, restarting downed servers, and logging significant but non-actionable events to generate reports which add into big-data </p>
+<p> the various technologies that are involved are (other than the ones listed above):</p>
+
+<ul>
+	<li>
+	   basic command-line tools such as ping and tracert to assess device connectivity
+	</li>
+	<li>
+		Remote Desktop to perform operations on remote devices
+	 </li>
+	 <li>
+		Windows Server tools and devices such as the Hypervisor, to remotely control virtual devices
+	 </li>
+	<li>
+		tools such as Winstat to assess device health
+	</li>
+  
+</ul>
+<h3>Achievements</h3>
+<ul>
+	<li>
+	   successfully responded to more than 20 device-down incidents 
+	</li>
+	
+	
+</ul>
+
+
+</div>
+`,
+`
+<div><h2>Cybersecurity - Altria Group </h2>
+<img id='image1'></img>
+<img id='image2'></img>
+
+    <p>Altria is the former Philip Morris. They are one of the largest corporations in the world; and is certainly its biggest and most influential tobacco and tobacco-related product producer</p>
+
+    <p>to manage the security of their digital information, they employ MAXXPotential to screen reported emails and to keep their information secure</p>
+    <p>The tools we use are:</p>
+	<img id='image3' style = "height:500px"></img>
+
+    <ul>
+        <li>Microsoft Excel
+            <ul>
+                <li>to record and categorize emails into malicious, legitimate and spam - this gets fed into big data to train pattern recognition</li>
+                <li>to use scripting to generate organized reports of the screened email</li>
+            </ul>
+        </li>
+        <li>Various URL Scanning tools to see if links in email have domains that has been black-listed or leads to suspicious locations</li>
+        <li>email headers  - SPF and DKIM authentication status gives more insight into the veracity of the sender of email</li>
+
+    </ul>
+	<img id='image4' style='height:500px'></img>
+
+    <h3>Responsibilities</h3>
+    <p>categorize each email and log the status of each email into a database</p>
+    <p>validate the concerned employee on discovery of a malicious email, or that the suspicious email was either legitimate or spam</p>
+    <p>generate reports of monthly records that organizes the information into easily understandable graphs</p>
+    
+      <h3>Achievements</h3>
+    <ul>
+        <li>
+           successfully classified more that 1000 emails
+        </li>
+        
+        
+    </ul>
+
+
+</div>
+
+`,
+`
+<div><h2>Web Content Creation - Medstar </h2>
+<img id='image1'></img>
+<img id='image2'></img>
+
+    <p>MedStar is a large system of hospitals active in the DC Maryland and Virginia area. </p>
+
+    <p>They employed MAXXPotential as part of their team to migrate their entire website, consisting of hundreds of individual pages, to a new design, using a completely new content management system. from Wordpress to Sitecore</p>
+    <p>We now perform constant content update and stylistic adjustments for the newly migrated website</p>
+    <p>The tools we use are:</p>
+	<img id='image3'style='height:500px'></img>
+
+    <ul>
+        <li>Sitecore</li>
+        <li>basic web development tools such as CSS, and HTML</li>
+
+    </ul>
+    <h3>Responsibilities</h3>
+    <p>Migrating all information of a large website from Wordpress to Sitecore</p>
+    <p>Make on-going stylistic and content adjustments and updates</p>
+    <img id='image4' style="display:none"></img>
+
+      <h3>Achievements</h3>
+    <ul>
+        <li>
+           Was part of the successful migration of the large website
+        </li>
+        <li>
+        completed the migration of Georgetown Surgical Pavilion site</li>
+        
+        
+    </ul>
+
+
+</div>
+
+`,
+
+`
+
+<div><h2>Website Maintenance and Development - Support </h2>
+<img id='image1'></img>
+<img id='image2' style='display:none'></img>
+
+    <p>MAXXPotential supports and manages the digital infrastructure of a large number of businesses and organizations</p>
+    <p>The vast majority of these clients use Wordpress to create their website. We use our thorough understanding of Wordpress to make adjustments and updates to these websites</p>
+    <p>The tools we use are:</p>
+	<img id='image3' style='height:500px'></img>
+
+    <ul>
+        <li>Wordpress and its various libraries, add-ons and frameworks</li>
+        <li>basic web development tools such as CSS, Javascript and HTML</li>
+        <li>WinSCP to access website repositories</li>
+
+
+    </ul>
+	<img id='image4' style='display:none'></img>
+
+    <h3>Responsibilities</h3>
+    <p>trouble-shooting for errors that frequently occur in client websites</p>
+    <p>make visual and content updates and changes</p>
+    
+    
+      <h3>Achievements</h3>
+    <ul>
+        <li>
+            <a href='https://janiemolster.com/product/book/'>successfully launched Janie Molster's book campaign</a>
+          
+        </li>
+        <li>
+            <a href='https://sweetpeawow.com/linkinbio'>made extensive changes and content creation for SweetPea </a>
+            </li>
+        <li>
+            was part of the team to launch the new MAXXPotential website</li>
+        
+    </ul>
+
+
+</div>
+
+
+
+`,
 ]
 //  gsap.to(teaset.children[8].rotation,{duration:1,x:Math.PI*.25})
 //    gsap.to(teaset.children[8].position,{duration:1,z:1.5})
@@ -226,7 +384,13 @@ $(picked).css('animation', '')
 lureSelection='off'
 
 $(picked).removeClass('picked2')
-waterColor=pickedColor
+SelectNumber = $(picked).attr('name')
+console.log(SelectNumber)
+waterColor=pickedColor;
+setTimeout(() => {
+	displayInformation()
+
+}, 500);
 }, 500);
 
 }
@@ -528,3 +692,15 @@ $("#download").click((e)=>{
 	download();
 	
 	})
+
+$('.presentation').click((e)=>{
+	e.preventDefault();
+	e.stopPropagation();
+	
+	$('.presentation').css('display','none')
+	$('body').css('background-color','white')
+
+
+
+})
+

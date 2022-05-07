@@ -55,9 +55,18 @@ border-radius: 10px;
 }
 
 body{
-display:flex
+    /* overflow: hidden; */
+/* padding:10px; */
+display:flex;
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
 
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .foodContainer{
 border-radius:10px;
 overflow: hidden;
@@ -71,15 +80,35 @@ margin-right:50px;
 
 .presentation{
 height:100%;
-width:60%;
-left:20%;
-overflow: scroll;
+width:80%;
+left:10%;
+overflow-y: scroll;
 background-color:white;
 border-radius: 12px;
 border:2px solid black;
 position:absolute;  
 z-index:3;
 display:none;
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+animation: drop .3s both;
+padding:20px;
+padding-bottom:50px;
+font-size:22px;
+}
+
+.presentation p{
+
+
+}
+
+@keyframes drop {
+    0%{transform:translateY(-100%)}
+    100%{transform:translateY(0%)}
+        
+    }
+.presentation::-webkit-scrollbar {
+    display: none;
 }
 
 .gameButton{
@@ -101,4 +130,14 @@ background-color:rgb(61, 179, 179);
 
     background-color:rgb(221, 60, 188);
     
-    }
+}
+
+img{
+
+height:200px;
+border-radius:10px;
+margin:auto;
+text-align: center;
+
+
+}
